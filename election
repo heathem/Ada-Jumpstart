@@ -1,0 +1,79 @@
+#Coder: Heather McKinnon
+#Date: 11 August 2016
+#Assignment: Make an electronic election program that tracks votes, total votes,
+  #and determines winner. Input - Poll 10 people for their vote. Output - Print
+  #the total votes cast as well as the winner. Handle ties for a winner. Handle
+  #grammer of vote summary saying "vote" or "votes" appropriately.
+
+
+puts "Welcome to my virtual election voting program!\n\nThe election candidates
+  are: Paige Down, Clicky Mouse, and Flash Tagg.\n\nPlease enter in your votes:"
+
+
+#Create variables for each candidate, set i to 1 to start the first vote, and a
+  #variable to help decide if the user would like to add another vote.
+
+i = 1
+another_vote = "y"
+paige_down = 0
+clicky_mouse = 0
+flash_tagg = 0
+
+
+#Create a until iterator to get user input to add votes to each candidate
+  #and asks user if they want more than 10 votes.
+
+until another_vote == "n"
+      puts "Vote #{i}:"
+	    i += 1
+	    vote = gets.chomp.downcase
+      if vote == "paige down"
+        paige_down = paige_down + 1
+		  elsif vote == "clicky mouse"
+			  clicky_mouse = clicky_mouse + 1
+		  elsif vote == "flash tagg"
+			  flash_tagg = flash_tagg + 1
+      end
+      if i > 10
+        puts "Would you like to add another vote (y/n)?"
+	      another_vote = gets.chomp.downcase
+      end
+end
+
+
+#Display the total votes cast for each candidate.
+  #Account for proper use of plural "votes" or singular "vote".
+
+puts "\nThe results are in:\n\n"
+
+if paige_down == 1
+  puts "Paige Down has #{paige_down}" + " vote."
+else
+  puts "Paige Down has #{paige_down}" + " votes."
+end
+
+if  clicky_mouse == 1
+  puts "Clicky Mouse has #{clicky_mouse}" + " vote."
+else
+  puts "Clicky Mouse has #{clicky_mouse}" + " votes."
+end
+
+if  flash_tagg == 1
+  puts "Flash Tagg has #{flash_tagg}" + " vote."
+else
+  puts "Flash Tagg has #{flash_tagg}" + " votes."
+end
+
+
+#Displays the winner after weighing votes against other candidates.
+  #If there is a tie, program will display that a re-vote is needed.
+
+if paige_down > flash_tagg && paige_down > clicky_mouse
+  puts "\nPaige Down is the winner!"
+elsif flash_tagg > paige_down && flash_tagg > clicky_mouse
+  puts "\nFlash Tagg is the winner!"
+elsif clicky_mouse > flash_tagg && clicky_mouse > paige_down
+  puts "\nClicky Mouse is the winner!"
+else
+  puts "Looks like there's a tie! Time to re-vote..."
+end

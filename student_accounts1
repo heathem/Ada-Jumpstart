@@ -1,0 +1,40 @@
+#Coder: Heather McKinnon
+#Date: 12 August 2016
+#Assignment: Create a student account generator program
+
+
+#Create three arrays to: contain student names, store student ID numbers, and contain student email addresses
+
+names = []
+id_numbers = []
+emails = []
+
+
+#Write a times loop that asks the user to enter in 5 student names (1st and Last) and store those values in the first array in all UPPERCASE
+#generate random ID numbers from 111111 to 999999 and put these values to the id_numbers array
+#generate student email addresses in the format: (first initial) + (last name) + (last three digits of student id number)@adadevelopersacademy.org
+#converted the random id numbers to a string to be able to display just the last three digits in the email
+
+5.times do
+	puts "Enter student's first name:"
+	first_name = gets.chomp.upcase
+	puts "Enter the student's last name:"
+ 	last_name = gets.chomp.upcase
+	id_number = rand(111111..999999)
+  id_number = id_number.to_s
+
+  names << "#{first_name} #{last_name}"
+
+	id_numbers << id_number
+
+	emails << "#{first_name[0,1]}#{last_name}#{id_number[3..5]}@adadevelopersacademy.org"
+
+end
+
+
+#print out all the student names, ID numbers, and email addresses in parallel. I looked up using [index] (curious if [i] will work the same way) on stackoverflow.com. Also curious, the example I found uses commas between the separate arrays, but will plus signs work? Like I learned in JumpStart about concatenating
+i = 0
+names.count.times do
+	puts "#{names[i]} #{id_numbers[i]} #{emails[i]}"
+  i += 1
+end

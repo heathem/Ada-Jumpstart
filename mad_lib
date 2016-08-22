@@ -1,0 +1,46 @@
+#Heather McKinnon
+#Date: 05 August 2016
+#Assignment: Create a MadLib program that accepts user input and outputs a completed MadLib.
+	#Use up to 10 different parts of speech in order to fill your MadLib.
+	#Output should consist of a paragraph of output that substitute's in the user's input.
+	#Additional criteria: use comments, reuse a word, ask for a number, try capitalize, downcase, and upcase.
+
+
+#Ask for values from user and assign user inputted Values to variables
+
+puts "\nHello and welcome to my MadLib program!\n\nPlease enter the following information to play:\n\n"
+
+puts "Adjective:"
+adjective_1 = gets.chomp.upcase
+
+puts "Noun:"
+lake_name = gets.chomp.capitalize
+
+puts "Number:"
+years = gets.chomp
+
+puts "Noun:"
+gift = gets.chomp
+
+puts "Verb ending in -ing:"
+activity_1 = gets.chomp.downcase
+
+puts "Another verb ending in -ing:"
+activity_2 = gets.chomp.downcase
+
+puts "Animal:"
+animal = gets.chomp.downcase
+
+puts "Adjective:"
+adjective_2 = gets.chomp.downcase
+
+
+#Display completed MadLib paragraph with the user's input
+
+puts "\n\nThat's it! Here is your MadLib:\n\n"
+
+puts adjective_1 + " news! " + lake_name + " Lake National Park is celebrating #{years} years! " +
+     "Come help us celebrate this month and receive a free " + gift + "! " +
+     "The park has many activities to enjoy like " + activity_1 + " and " + activity_2 + ". " +
+     "Also, pets are welcome so bring your " + animal + "! " +
+     "Come enjoy the " + adjective_2 + " outdoors at " + lake_name + " Lake National Park!"

@@ -1,0 +1,56 @@
+#Coder: Heather McKinnon
+#Date: 19 August 2016
+#Assignment: Rework my student_accounts1 generator program, using an array of
+	#hashes to store data. Also added: Code to account for first names with spaces
+	#in them (eg. Mary Jane) and I changed the 5 times loop to just ask the user if
+	#they want to add another student so they can add as many as they want.
+
+#Create a blank array to store hashes for student data
+
+student_data = []
+
+
+#Wrote an until loop that asks the user for student names (first and last)
+	#until the user says no when prompted to add another. The ID's are generated
+	#randomly from a range of 111111 to 999999 and I converted each number to a
+	#string in order to pick out the last 3 digits of the number to add to each
+	#email. The emails are generated in the following format: (first initial(s)) +
+	#(last name) + (last three digits of the random ID number) +
+	#@adadevelopersacademy.org. Each student name will create a new hash and the
+	#student's name, ID, and email will all be added to their hash.
+
+add_another = "y"
+
+until add_another == "n"
+	puts "Enter student's first name:"
+	first_name = gets.chomp.upcase
+	puts "Enter the student's last name:"
+ 	last_name = gets.chomp.upcase
+
+	id_number = rand(111111..999999)
+	id_number = id_number.to_s
+
+	if first_name.split.length == 2
+		email = "#{first_name.split.first[0,1]}#{first_name.split.last[0,1]}#{last_name}#{id_number[3..5]}@adadevelopersacademy.org"
+	else
+		email = "#{first_name[0,1]}#{last_name}#{id_number[3..5]}@adadevelopersacademy.org"
+	end
+
+  new_student = {"name" => "#{first_name} #{last_name}", "ID" => "#{id_number}", "email" => "#{email}"}
+
+	student_data << new_student
+
+	puts "\n...Add another student?"
+	add_another = gets.chomp.downcase
+end
+
+
+#Print out all the student names, ID numbers, and email addresses in parallel.
+	#Uses number of objects in the student_data array to determine how many times
+	#the loop will run, and i to cycle through those objects
+
+i = 0
+student_data.count.times do
+	puts "#{student_data[i]["name"]} #{student_data[i]["ID"]} #{student_data[i]["email"]}"
+  i += 1
+end

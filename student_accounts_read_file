@@ -1,0 +1,45 @@
+#Coder: Heather McKinnon
+#Date: 19 August 2016
+#Assignment: Rework my student_accounts2 generator program to add the ability to read from a file
+
+
+#Create a blank array of hashes for student data
+
+student_data = []
+
+#This will read from a file entered in here in the code and does the same thing
+	#as student_accounts2, only reads from a file. In this case, I made a txt file
+	#in my ada/jumpstart folder with each name listed on it's own line. I split the
+	#first and last names to be able to make the email (see student_accounts2), and
+	#double split the first name in case of first names that have a space in them.
+
+File.open("d:/ada/jumpstart/student_names.txt") do |f|
+	f.each_line do |line|
+	last_name = line.split.last
+	first_name = line.split(line.split.last).first
+
+	id_number = rand(111111..999999)
+	id_number = id_number.to_s
+
+	if first_name.split.length == 2
+		email = "#{first_name.split.first[0,1]}#{first_name.split.last[0,1]}#{last_name}#{id_number[3..5]}@adadevelopersacademy.org"
+	else
+		email = "#{first_name[0,1]}#{last_name}#{id_number[3..5]}@adadevelopersacademy.org"
+	end
+
+	new_student = {"name" => "#{first_name}#{last_name}", "ID" => "#{id_number}", "email" => "#{email}"}
+
+	student_data << new_student
+
+	end
+end
+
+#Print out all the student names, ID numbers, and email addresses in parallel.
+	#Uses number of objects in the student_data array to determine how many times
+	#the loop will run, and i to cycle through those objects
+
+i = 0
+student_data.count.times do
+	puts "#{student_data[i]["name"]} #{student_data[i]["ID"]} #{student_data[i]["email"]}"
+  i += 1
+end

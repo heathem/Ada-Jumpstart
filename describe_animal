@@ -1,0 +1,26 @@
+#Coder: Heather McKinnon
+#Date: 04 August 2016
+#Assignment: Code a program to describe an animal
+
+
+#Collect information about an animal and store it in some variables
+
+puts "Is the animal a mammal, bird, or fish?"
+type = gets.chomp
+
+puts "How many legs does the animal have?"
+leg_count = gets.chomp
+
+puts "Does the animal have scales, feathers, or hair?"
+skin = gets.chomp
+
+puts "Is the animal aquatic, terrestrial, or aerial?"
+environment = gets.chomp
+
+
+#Use those variables to describe the animal in the console output
+
+puts "The animal is a " + type + ". " +
+	 "It has #{leg_count} legs. " +
+	 "The animal has " + skin +
+	 " and it's environment is " + environment + "."

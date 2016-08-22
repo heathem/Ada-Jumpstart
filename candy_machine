@@ -1,0 +1,83 @@
+#Coder: Heather McKinnon
+#Date: 8 August 2016
+#Assignment: Program a Virtual Candy Machine that asks the user to input how
+  #much money they have, displays the candy options, and then asks
+  #the user to choose a candy. If the user has enough money, they
+  #get a message confirming their choice and the change is calculated
+  #and displayed, if not then user is informed. Additional challenges
+  #addressed: use downcase or upcase to help user input to match
+  #candy selection letter and do something when the user enters an
+  #invalid amount for the money and invalid candy selection.
+
+
+#Greets user and asks for money input. Exits program if zero or invalid input.
+  #Will display money if valid.
+
+puts "Welcome to Heather's Virtual Candy Machine!\n\n"
+
+puts "Enter in how much money you have to spend:"
+
+money = gets.chomp.to_f.round(2)
+
+if money > 0
+	puts "\nGreat! You have $ #{money}.\n\n"
+else
+	puts "What? No money, you say? Sorry...no candy for you."
+	exit
+end
+
+
+#Displays candy selections. Asks user to input letter corresponding
+  #to their candy choice.
+
+puts "Here are your candy selections: \n
+     A. Nerds.............$1.00 \n
+     B. 5th Avenue........$1.25 \n
+     C. Whatchamacallit...$1.50 \n
+     D. Blow Pop..........$0.35 \n
+     E. Pop Rocks.........$0.75 \n
+     F. Ferrero Rocher....$1.95 \n\n"
+
+puts "Enter your selection:\n"
+
+candy = gets.chomp.upcase
+
+
+#Assigns values to price and name variables based on the candy selected,
+  #if invalid selection, exits program.
+
+if candy == "A"
+	cost = 1.00
+	candy_name = "Nerds"
+elsif candy == "B"
+	cost = 1.25
+	candy_name = "5th Avenue"
+elsif candy == "C"
+	cost = 1.50
+	candy_name = "Whatchamacallit"
+elsif candy == "D"
+	cost = 0.35
+	candy_name = "Blow Pop"
+elsif candy == "E"
+	cost = 0.75
+	candy_name = "Pop Rocks"
+elsif candy == "F"
+	cost = 1.95
+	candy_name = "Ferrero Rocher"
+else
+	puts "Invalid selection! No candy for you."
+  exit
+end
+
+
+#Uses cost and money variables to calculate and create the change variable.
+  #Uses change and candy_name values to display change and candy selection.
+  #If cost is higher than money, then exits program.
+
+if cost <= money
+	change = (money - cost).round(2)
+	puts "\nWoot! Enjoy your " + candy_name + "! Your change is $ #{change}."
+else
+	puts "Sorry, not enough money...no candy this time."
+  exit
+end
